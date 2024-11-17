@@ -36,7 +36,7 @@ public class RequestParamController {
         return "ok";
     }
 
-    @ResponseBody
+    @ResponseBody // 문자로 응답 해줌
     @RequestMapping("/request-param-v3")
     public String requestParamV3(
             @RequestParam String username,
@@ -82,7 +82,8 @@ public class RequestParamController {
     }
 
     @ResponseBody
-    @RequestMapping("/model-attribute-v1")
+    //@RequestMapping("/model-attribute-v1")
+    //@ModelAttribute 사용전
     public String modelAttributeV1(@RequestParam String username, @RequestParam int age){
         HelloData helloData = new HelloData();
         helloData.setUsername(username);
@@ -99,7 +100,7 @@ public class RequestParamController {
      */
     @ResponseBody
     @RequestMapping("/model-attribute-v1")
-    public String modelAttributeV1(@ModelAttribute HelloData helloData) {
+    public String modelAttributeV1(@ModelAttribute HelloData helloData) { // 객체의 파라미터만 맞으면 된다. username하고 age
         log.info("username={}, age={}", helloData.getUsername(),
                 helloData.getAge());
         return "ok";
